@@ -44,6 +44,19 @@ def get_data_csv_path(version = None) -> Path:
 
     return get_repo_root() / value
 
+def get_sections_csv_path(version = None) -> Path:
+    value = CONFIG["sections_csv"]
+    if version is None:
+        version = get_default_version()
+    
+    if version is not None:
+        value = value.replace("{version}", version)
+    
+    if "{version}" in value:
+        raise RuntimeError("You should probably pass a --version parameter. If this error still shows up with the argument given, please contact the repo maintainers.")
+
+    return get_repo_root() / value
+
 def get_base_elf(version = get_default_version()) -> Path:
     return get_versioned_data_path() / 'main.elf'
 
