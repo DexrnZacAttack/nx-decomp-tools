@@ -60,6 +60,8 @@ def parse_function_csv_entry(row) -> FunctionInfo:
 def get_functions_csv_path(version = None) -> Path:
     return config.get_functions_csv_path(version)
 
+def get_data_csv_path(version = None) -> Path:
+    return config.get_data_csv_path(version)
 
 def get_functions(path: tp.Optional[Path] = None, version = None, all=False) -> tp.Iterable[FunctionInfo]:
     if path is None:
